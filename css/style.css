@@ -6,13 +6,21 @@ body {
   font-weight: 300;
   color: #363636;
 }
+.no-scroll {
+  overflow: hidden;
+}
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   height: 104px;
   padding-left: 34px;
   border-bottom: 1px solid #d4d4d4;
+}
+.m-menu {
+  height: 100%;
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
 }
 .line {
   height: 100%;
@@ -73,6 +81,7 @@ body {
 }
 .mobile-buttons {
   display: none;
+  margin-left: auto;
 }
 .m-menu-button,
 .search-button {
@@ -125,6 +134,7 @@ body {
   padding-left: 81px;
   padding-right: 81px;
   cursor: pointer;
+  text-decoration: none;
 }
 .trailer-button-icon {
   margin-right: 14px;
@@ -228,9 +238,17 @@ body {
   font-weight: 900;
 }
 .tabs-content {
-  display: flex;
+  display: none;
   align-items: center;
   flex-wrap: wrap;
+  visibility: hidden;
+}
+.tabs-content.visible {
+  display: flex;
+  visibility: visible;
+}
+.tab {
+  cursor: pointer;
 }
 .card {
   display: flex;
@@ -286,6 +304,17 @@ body {
   line-height: 16px;
   color: #000000;
   margin-top: 14px;
+}
+.button-next {
+  display: none;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 99;
+  cursor: pointer;
 }
 @media (max-width: 1200px) {
   .container {
@@ -361,6 +390,55 @@ body {
     height: 70px;
     padding-left: 10px;
   }
+  .m-menu {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    left: 0;
+    top: 69px;
+    right: 0;
+    bottom: 0;
+    height: calc(100% - 68px);
+    background: #5671f6;
+  }
+  .m-menu.active {
+    display: flex;
+  }
+  .navigation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  .navigation-link {
+    color: #ffffff;
+    margin-right: 0;
+    margin-bottom: 18px;
+  }
+  .navigation-link:last-child {
+    margin-bottom: 0;
+  }
+  .sign-up {
+    background-color: transparent;
+    color: #ffffff;
+    border: none;
+    margin-bottom: 30px;
+  }
+  .button-group {
+    height: auto;
+    flex-direction: column;
+  }
+  .search-input {
+    width: 260px;
+    height: 50px;
+    border-radius: 5px;
+    border: none;
+    background-image: none;
+    margin: 0;
+  }
   .line {
     margin-left: 10px;
   }
@@ -383,16 +461,16 @@ body {
     padding-top: 50px;
     padding-bottom: 70px;
   }
+  .news-card {
+    max-width: 90%;
+  }
+  .button-next {
+    display: block;
+  }
   .mobile-buttons {
     display: block;
   }
-  .button-group {
-    display: none;
-  }
   .header-logo:after {
-    display: none;
-  }
-  .search-input {
     display: none;
   }
   .line {
